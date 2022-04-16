@@ -1,6 +1,26 @@
 import { Link } from 'react-router-dom';
 
-function Header() {
+function Header({
+    accessToken,
+    username,
+    _id
+}){
+
+    const userNavigation = (
+        <div id="profile">
+            <Link to="/profile">Welcome {username}</Link>
+            <Link to="/my-listings" >My Listings</Link>
+            <Link to="/add-car" >Create Listing</Link>
+            <Link to="/logout" >Logout</Link>
+        </div>
+    )
+
+    const guestNavigation = (
+        <div id="guest">
+            <Link to="/login" >Login</Link>
+            <Link to="/register" >Register</Link>
+        </div>
+    )
 
     return (
         <header>
@@ -9,17 +29,8 @@ function Header() {
                 <Link to="/catalog" >All Listings</Link>
                 <Link to="by-year" >By Year</Link>
                 
-                <div id="guest">
-                    <Link to="/login" >Login</Link>
-                    <Link to="/register" >Register</Link>
-                </div>
-                
-                <div id="profile">
-                    <Link to="/profile">Welcome username</Link>
-                    <Link to="/my-listings" >My Listings</Link>
-                    <Link to="/add-car" >Create Listing</Link>
-                    <Link to="/logout" >Logout</Link>
-                </div>
+                {username ? userNavigation : guestNavigation}
+      
             </nav>
         </header>
     )
