@@ -28,17 +28,28 @@ export const loginService = async (username, password) => {
 
 export const registerService = async (username, password) => {
 
-    const sendData = await fetch('http://localhost:3030/users/register', {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify({username, password})
-    });
+    try {
+        
+        const response = await fetch('http://localhost:3030/users/register', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({username, password})
+        });
+        
+        if(response.ok !== true){
+            const error = await response.json();
+            throw new Error(error.message);
 
-    const result = await sendData.json();
+        }else{
 
-    return result;
+            return await response.json();
+        }
+
+    } catch (error) {
+        throw error;
+    }
 }
 
 // export const logoutService = async () => {
