@@ -1,9 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
-import { login } from '../services/authService.js'
+import { useContext } from 'react'
+import { AuthContext } from '../contexts/AuthContext.js';
+
+import { loginService } from '../services/authService.js'
 
 
-function Login({ onLogin }){
+function Login(){
 
+    const { onLogin } = useContext(AuthContext);
+    
     const navigate = useNavigate();
 
     function onSubmitHandler(e){
@@ -14,7 +19,7 @@ function Login({ onLogin }){
         const username = formData.get('username');
         const password = formData.get('password');
 
-        login(username, password)
+        loginService(username, password)
             .then(authData => {
                 onLogin(authData);
                 navigate('/');

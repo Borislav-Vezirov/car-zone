@@ -1,6 +1,6 @@
 
 
-export const login = async (username, password) => {
+export const loginService = async (username, password) => {
 
     try {
         
@@ -25,3 +25,23 @@ export const login = async (username, password) => {
         throw err;
     }
 }
+
+export const registerService = async (username, password) => {
+
+    const sendData = await fetch('http://localhost:3030/users/register', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify({username, password})
+    });
+
+    const result = await sendData.json();
+
+    return result;
+}
+
+// export const logoutService = async () => {
+
+//     return await fetch('http://localhost:3030/users/logout');
+// }

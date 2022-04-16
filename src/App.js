@@ -18,19 +18,19 @@ function App() {
   }
 
   return (
-  
+      <AuthContext.Provider value={{user, onLogin}}>
       <div className="App">
-        <Header { ...user } />
+        <Header />
         < main id="main-content">
           <Routes>
             <Route path="/" element={ < Home /> } />
             <Route path="/catalog" element={ < Catalog /> } />
-            <Route path="/login" element={ < Login onLogin={onLogin} /> } />
+            <Route path="/login" element={ < Login /> } />
             <Route path="/register" element={ < Register /> } />
           </Routes>
         </main>
       </div>
-
+      </AuthContext.Provider>
   );
 }
 
