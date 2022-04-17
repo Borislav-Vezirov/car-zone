@@ -7,6 +7,7 @@ import Catalog from "./components/Catalog.js";
 import Login from "./components/Login.js";
 import Register from "./components/Register.js";
 import { useState } from 'react';
+import Footer from './components/Footer.js';
 
 
 function App() {
