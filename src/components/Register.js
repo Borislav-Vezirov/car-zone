@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext.js'
 import { registerService } from "../services/authService.js";
-import { setUserData } from "../utils.js";
+import { setUserData } from "../utils/utils.js";
 
 function Register(){
 

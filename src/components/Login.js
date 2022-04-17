@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { AuthContext } from '../contexts/AuthContext.js';
 
 import { loginService } from '../services/authService.js'
-import { setUserData } from "../utils.js";
+import { setUserData } from "../utils/utils.js";
 
 
 function Login(){

@@ -1,4 +1,4 @@
-import { getUserData } from '../utils.js'
+import { getUserData } from '../utils/utils.js'
 
 export async function getAllCars(){
     
