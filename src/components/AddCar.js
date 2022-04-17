@@ -13,30 +13,13 @@ function AddCar(){
     const onSubmitHandler = (e) => {
         e.preventDefault();
 
-        const { 
-            brand, 
-            model, 
-            description, 
-            year, 
-            imageUrl, 
-            price } = Object.fromEntries(new FormData(e.currentTarget));
-
-        const car = {
-            brand, 
-            model, 
-            description, 
-            year, 
-            imageUrl, 
-            price
-        };
+        const car = Object.fromEntries(new FormData(e.currentTarget));
 
         addCar(car)
             .then(res => {
                 console.log(res);
                 navigate('/catalog')
             })
-
-
     }
 
     return(
