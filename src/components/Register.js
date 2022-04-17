@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext.js'
 import { registerService } from "../services/authService.js";
+import { setUserData } from "../utils.js";
 
 function Register(){
 
@@ -25,6 +26,7 @@ function Register(){
         registerService(username, password)
         .then(authData => {
             onLogin(authData);
+            setUserData(authData);
             navigate('/');
         })
         .catch(err => console.log(err))
