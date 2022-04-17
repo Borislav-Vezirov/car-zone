@@ -7,6 +7,7 @@ import Catalog from "./components/Catalog.js";
 import Login from "./components/Login.js";
 import Register from "./components/Register.js";
 import { useState } from 'react';
+import AddCar from './components/AddCar.js';
 import Footer from './components/Footer.js';
 
 
@@ -28,8 +29,10 @@ function App() {
             <Route path="/catalog" element={ < Catalog /> } />
             <Route path="/login" element={ < Login /> } />
             <Route path="/register" element={ < Register /> } />
+            <Route path="/add-car" element={ < AddCar /> } />
           </Routes>
         </main>
+        <Footer />
       </div>
       </AuthContext.Provider>
   );
