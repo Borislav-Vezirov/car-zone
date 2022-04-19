@@ -9,6 +9,15 @@ export async function getAllCars(){
     return result;
 }
 
+export async function getOneById(id){
+
+    const response = await fetch(`http://localhost:3030/data/cars/${id}`);
+
+    const car = await response.json();
+
+    return car;
+}
+
 export async function addCar(car){
     
     const user = getUserData();

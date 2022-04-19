@@ -5,6 +5,21 @@ import { getOneById } from "../services/carService.js";
 
 function Details(){
 
+    const { carId } = useParams();
+
+    const navigate = useNavigate();
+
+    const [car, setCar] = useState({});
+
+    useEffect(() => {
+
+        getOneById(carId)
+            .then(res => {
+                setCar(res);
+            })
+    }, []);
+
+
     return(
         <section id="listing-details">
             <h1>Details</h1>
