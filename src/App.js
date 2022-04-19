@@ -9,6 +9,7 @@ import Register from "./components/Register.js";
 import { useState } from 'react';
 import AddCar from './components/AddCar.js';
 import Footer from './components/Footer.js';
+import Details from './components/Details.js';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
             <Route path="/login" element={ < Login /> } />
             <Route path="/register" element={ < Register /> } />
             <Route path="/add-car" element={ < AddCar /> } />
+            <Route path="/details/:carId" element={ < Details /> } />
           </Routes>
         </main>
         <Footer />
