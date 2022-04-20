@@ -10,6 +10,7 @@ import { useState } from 'react';
 import AddCar from './components/AddCar.js';
 import Footer from './components/Footer.js';
 import Details from './components/Details.js';
+import EditCar from './components/EditCar.js';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             <Route path="/register" element={ < Register /> } />
             <Route path="/add-car" element={ < AddCar /> } />
             <Route path="/details/:carId" element={ < Details /> } />
+            <Route path="/edit/:carId" element={ < EditCar /> } />
           </Routes>
         </main>
         <Footer />

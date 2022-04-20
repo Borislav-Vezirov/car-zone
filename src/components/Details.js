@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext.js";
-import { getOneById } from "../services/carService.js";
+import { getOneById, removeCar } from "../services/carService.js";
 
 
 function Details(){
@@ -22,11 +22,19 @@ function Details(){
             })
     }, []);
 
-    console.log('dsfgsdfgdsfgsdgb ' + user._id);
+
+    async function onDeleteHandler(e){
+        e.preventDefault();
+
+        await removeCar(carId)
+
+        navigate('/catalog');
+    }
+
     const ownerButtons = (
         <div className="listings-buttons">
             <Link to={`/edit/${car._id}`} className="button-list">Edit</Link>
-            <a href="#" className="button-list">Delete</a>
+            <a href="#" className="button-list" onClick={onDeleteHandler} >Delete</a>
         </div>
     )
 

@@ -17,7 +17,6 @@ function AddCar(){
 
         addCar(car)
             .then(res => {
-                console.log(res);
                 navigate('/catalog')
             })
     }

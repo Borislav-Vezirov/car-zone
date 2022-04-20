@@ -35,3 +35,33 @@ export async function addCar(car){
 
     return result;
 } 
+
+export async function removeCar(id){
+
+    const user = getUserData();
+
+    await fetch(`http://localhost:3030/data/cars/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'X-Authorization': user.accessToken
+        },
+    });
+}
+
+export async function editCar(id, car){
+    
+    const user = getUserData();
+
+    const response = await fetch(`http://localhost:3030/data/cars/${id}`, {
+        method: 'PUT',
+        headers: {
+            'content-type': 'application/json',
+            'X-Authorization': user.accessToken
+        },
+        body: JSON.stringify(car)
+    });
+
+    const result = await response.json();
+
+    return result;
+} 
