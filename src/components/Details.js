@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext.js";
 import { getOneById } from "../services/carService.js";
 
 
 function Details(){
+
+    const { user } = useContext(AuthContext);
 
     const { carId } = useParams();
 
@@ -19,6 +22,13 @@ function Details(){
             })
     }, []);
 
+    console.log('dsfgsdfgdsfgsdgb ' + user._id);
+    const ownerButtons = (
+        <div className="listings-buttons">
+            <Link to={`/edit/${car._id}`} className="button-list">Edit</Link>
+            <a href="#" className="button-list">Delete</a>
+        </div>
+    )
 
     return(
         <section id="listing-details">
@@ -32,13 +42,10 @@ function Details(){
                     <li><span>Year:</span>{car.year}</li>
                     <li><span>Price:</span>{car.price}$</li>
                 </ul>
+                {user._id == car._ownerId ? ownerButtons : null}
 
                 <p className="description-para">{car.description}</p>
 
-                <div className="listings-buttons">
-                    <Link to={`/edit/${car._id}`} className="button-list">Edit</Link>
-                    <a href="#" className="button-list">Delete</a>
-                </div>
             </div>
         </section>
     )
