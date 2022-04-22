@@ -11,13 +11,19 @@ import AddCar from './components/AddCar.js';
 import Footer from './components/Footer.js';
 import Details from './components/Details.js';
 import EditCar from './components/EditCar.js';
+import { useLocalStorage } from './hooks/useLocalStorage.js';
 
 
 function App() {
 
-  const [user, setUser] = useState({});
+  const [user, setUser] = useLocalStorage('user', {
+    accessToken: "",
+    username: "",
+    _id: "",
+  });
 
   const onLogin = (authData) => {
+    console.log(authData);
     setUser(authData);
   }
 

@@ -1,4 +1,4 @@
-import { getUserData } from '../utils/utils.js'
+
 
 export async function getAllCars(){
     
@@ -20,7 +20,7 @@ export async function getOneById(id){
 
 export async function addCar(car){
     
-    const user = getUserData();
+    const user = localStorage.getItem('user');
 
     const response = await fetch('http://localhost:3030/data/cars', {
         method: 'POST',
@@ -38,7 +38,7 @@ export async function addCar(car){
 
 export async function removeCar(id){
 
-    const user = getUserData();
+    const user = localStorage.getItem('user');
 
     await fetch(`http://localhost:3030/data/cars/${id}`, {
         method: 'DELETE',
@@ -50,7 +50,7 @@ export async function removeCar(id){
 
 export async function editCar(id, car){
     
-    const user = getUserData();
+    const user = localStorage.getItem('user');
 
     const response = await fetch(`http://localhost:3030/data/cars/${id}`, {
         method: 'PUT',

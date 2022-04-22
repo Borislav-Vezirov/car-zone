@@ -3,7 +3,6 @@ import { useContext } from 'react'
 import { AuthContext } from '../contexts/AuthContext.js';
 
 import { loginService } from '../services/authService.js'
-import { setUserData } from "../utils/utils.js";
 
 
 function Login(){
@@ -23,7 +22,6 @@ function Login(){
         loginService(username, password)
             .then(authData => {
                 onLogin(authData);
-                setUserData(authData);
                 navigate('/');
             })
             .catch(err => console.log(err))
