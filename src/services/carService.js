@@ -1,67 +1,79 @@
+import { del, get, post, put } from "./requester.js";
+
 
 
 export async function getAllCars(){
+
+    return get('/cars?sortBy=_createdOn%20desc');
+
+    // const response = await fetch('http://localhost:3030/data/cars?sortBy=_createdOn%20desc');
     
-    const response = await fetch('http://localhost:3030/data/cars?sortBy=_createdOn%20desc');
+    // const result = await response.json();
     
-    const result = await response.json();
-    
-    return result;
+    // return result;
 }
 
 export async function getOneById(id){
 
-    const response = await fetch(`http://localhost:3030/data/cars/${id}`);
+    return get(`/cars/${id}`)
 
-    const car = await response.json();
+    // const response = await fetch(`http://localhost:3030/data/cars/${id}`);
 
-    return car;
+    // const car = await response.json();
+
+    // return car;
 }
 
 export async function addCar(car){
+
+    return post(`/cars`, car);
     
-    const user = localStorage.getItem('user');
+    // const user = JSON.parse(localStorage.getItem('user'));
 
-    const response = await fetch('http://localhost:3030/data/cars', {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json',
-            'X-Authorization': user.accessToken
-        },
-        body: JSON.stringify(car)
-    });
+    // const response = await fetch('http://localhost:3030/data/cars', {
+    //     method: 'POST',
+    //     headers: {
+    //         'content-type': 'application/json',
+    //         'X-Authorization': user.accessToken
+    //     },
+    //     body: JSON.stringify(car)
+    // });
 
-    const result = await response.json();
+    // const result = await response.json();
 
-    return result;
+    // return result;
 } 
 
 export async function removeCar(id){
 
-    const user = localStorage.getItem('user');
+    return del(`/cars/${id}`);
 
-    await fetch(`http://localhost:3030/data/cars/${id}`, {
-        method: 'DELETE',
-        headers: {
-            'X-Authorization': user.accessToken
-        },
-    });
+    // const user = JSON.parse(localStorage.getItem('user'));
+
+    // await fetch(`http://localhost:3030/data/cars/${id}`, {
+    //     method: 'DELETE',
+    //     headers: {
+    //         'X-Authorization': user.accessToken
+    //     },
+    // });
 }
 
 export async function editCar(id, car){
+
+    return put(`/cars/${id}`, car)
     
-    const user = localStorage.getItem('user');
+    // const user = JSON.parse(localStorage.getItem('user'));
 
-    const response = await fetch(`http://localhost:3030/data/cars/${id}`, {
-        method: 'PUT',
-        headers: {
-            'content-type': 'application/json',
-            'X-Authorization': user.accessToken
-        },
-        body: JSON.stringify(car)
-    });
+    // const response = await fetch(`http://localhost:3030/data/cars/${id}`, {
+    //     method: 'PUT',
+    //     headers: {
+    //         'content-type': 'application/json',
+    //         'X-Authorization': user.accessToken
+    //     },
+    //     body: JSON.stringify(car)
+    // });
 
-    const result = await response.json();
+    // const result = await response.json();
 
-    return result;
+    // return result;
 } 
