@@ -19,6 +19,9 @@ function AddCar(){
             .then(res => {
                 navigate('/catalog')
             })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     return(

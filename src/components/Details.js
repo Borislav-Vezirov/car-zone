@@ -20,6 +20,9 @@ function Details(){
             .then(res => {
                 setCar(res);
             })
+            .catch(err => {
+                console.log(err);
+            })
     }, []);
 
 

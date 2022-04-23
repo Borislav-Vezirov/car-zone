@@ -15,6 +15,9 @@ function Catalog() {
                 // setLoading = false;
                 setCars(result);
             })
+            .catch(err => {
+                console.log(err);
+            })
     }, []);
 
     return (

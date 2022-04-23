@@ -8,7 +8,6 @@ import Login from "./components/Login.js";
 import Register from "./components/Register.js";
 import { useState } from 'react';
 import AddCar from './components/AddCar.js';
-import Footer from './components/Footer.js';
 import Details from './components/Details.js';
 import EditCar from './components/EditCar.js';
 import { useLocalStorage } from './hooks/useLocalStorage.js';
@@ -42,7 +41,6 @@ function App() {
             <Route path="/edit/:carId" element={ < EditCar /> } />
           </Routes>
         </main>
-        <Footer />
       </div>
       </AuthContext.Provider>
   );

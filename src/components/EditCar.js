@@ -17,7 +17,10 @@ function EditCar(){
         getOneById(carId)
             .then(res => {
                 setCar(res)
-            });
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }, []);
 
     async function onSubmitHandler(e){
@@ -25,10 +28,15 @@ function EditCar(){
         e.preventDefault()
 
         const formData = Object.fromEntries(new FormData(e.target));
+        try {
+            
+            await editCar(carId,formData);
+    
+            navigate('/catalog');
 
-        await editCar(carId, formData);
-
-        navigate('/catalog');
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return (
